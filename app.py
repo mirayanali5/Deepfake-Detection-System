@@ -302,7 +302,7 @@ if uploaded_file is not None:
         st.error(f"Error during video processing: {str(e)}")
 
 else:
-    st.info("Disclaimer: This application uses a machine learning model for prediction. While it has been trained for accuracy, it may occasionally produce incorrect results.")
+    st.info("Disclaimer: This application uses a machine learning model to provide prediction. While it has been trained to provide maximum accuracy, it may sometimes produce incorrect results.")
 
 
 
