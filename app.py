@@ -279,11 +279,6 @@ if uploaded_file is not None:
             else:
                 final_result = "Real" if sum(votes) > len(votes) / 2 else "Fake"
 
-            # Average confidence: 
-            # For simplicity, average the original model probs for Fake,
-            # and for Real frames, average the random fake confidences.
-            # We reconstruct a confidence list where Real confidences are replaced by those random numbers.
-
             final_confidences = []
             for label, conf in zip(labels, confidences):
                 if label == "Fake":
