@@ -26,7 +26,7 @@ IMG_SIZE = (224, 224)
 def load_model():
     """Load the deepfake detection model with caching"""
     try:#majority correct using best with 87 accuracy
-        model = tf.keras.models.load_model("final_model.keras", safe_mode=False)
+        model = tf.keras.models.load_model("best_model.h5")
         return model
     except Exception as e:
         st.error(f"Error loading model: {str(e)}")
