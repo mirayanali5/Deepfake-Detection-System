@@ -30,7 +30,7 @@ def load_model():
         return model
     except Exception as e:
         st.error(f"Error loading model: {str(e)}")
-        st.error("Please ensure 'Final Model' is in the same directory as this script")
+        st.error("Please ensure 'best_model.h5' is in the same directory as this script")
         return None
 
 # Load model
@@ -226,7 +226,7 @@ if model is None:
     st.markdown("""
     <div class="error-message">
         <h3>⚠️ Model Loading Error</h3>
-        <p>Please ensure your model file 'FINAL MODEL' is in the correct location.</p>
+        <p>Please ensure your model file 'best_model.h5' is in the correct location.</p>
     </div>
     """, unsafe_allow_html=True)
     st.stop()
