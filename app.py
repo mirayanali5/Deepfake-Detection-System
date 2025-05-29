@@ -30,7 +30,7 @@ def load_model():
         return model
     except Exception as e:
         st.error(f"Error loading model: {str(e)}")
-        st.error("Please ensure 'final_model.keras' is in the same directory as this script")
+        st.error("Please ensure 'Final Model' is in the same directory as this script")
         return None
 
 # Load model
