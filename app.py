@@ -25,7 +25,7 @@ IMG_SIZE = (224, 224)
 @st.cache_resource
 def load_model():
     """Load the deepfake detection model with caching"""
-    try:#majority correct using best with 87 accuracy
+    try:
         model = tf.keras.models.load_model("best_model.h5")
         return model
     except Exception as e:
@@ -55,7 +55,7 @@ def predict_frame(frame_bgr):
     frame_processed, frame_display = preprocess_frame(frame_bgr)
     pred_prob = model.predict(np.expand_dims(frame_processed, 0), verbose=0)[0, 0]
     
-    label = "Real" if pred_prob < 0.95 else "Fake"
+    label = "Real" if pred_prob < 0.87 else "Fake"
     return label, pred_prob, frame_display
 
 def extract_frames(video_path, interval=30):
