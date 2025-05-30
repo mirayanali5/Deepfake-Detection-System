@@ -173,7 +173,7 @@ st.markdown('<h1 class="stTitle">DeepFake Detection System</h1>', unsafe_allow_h
 if model is None:
     st.stop()
 
-st.write("### Upload a video to detect deepfakes")
+st.write("### Upload a video to check for deepfakes")
 uploaded_file = st.file_uploader("Choose a video file", type=["mp4", "avi", "mov"])
 frame_interval = st.number_input("Frame Sampling Interval", min_value=1, value=30, step=1)
 
