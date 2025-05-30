@@ -203,8 +203,8 @@ if uploaded_file:
 
                 # Final Analysis
                 vote_score = sum(1 if lbl == "Real" else 0 for lbl in labels)
-                final_label = "✅ Real" if vote_score > len(labels) / 2 else "🚨 DeepFake"
-                final_color = "#4ecdc4" if final_label == "✅ Real" else "#ff6b6b"
+                final_label = "✅ Real Content" if vote_score > len(labels) / 2 else "🚨 DeepFake Detected"
+                final_color = "#4ecdc4" if final_label == "✅ Real Content" else "#ff6b6b"
                 avg_conf = np.mean([conf * 100 if lbl == "Fake" else random.randint(80, 100) for lbl, conf in zip(labels, confidences)])
 
                 st.markdown(f"""
