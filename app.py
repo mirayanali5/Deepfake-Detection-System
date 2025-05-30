@@ -76,7 +76,7 @@ st.markdown("""
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap');
 .stApp {
     font-family: 'Outfit', sans-serif;
-    background-image: url("https://raw.githubusercontent.com/mirayanali5/Deepfake-detection-system/main/bg.jpg");
+    background-image: url("bg.jpg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
