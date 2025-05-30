@@ -70,100 +70,150 @@ def predict_video_frames(video_path, interval=30):
         confidences.append(prob)
     return processed_frames, labels, predictions, confidences
 
-# Custom CSS
 st.markdown("""
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap');
-    .stApp {
-        font-family: 'Outfit', sans-serif;
-        background: linear-gradient(135deg, #1c2541, #3a506b);
-        color: #ffffff;
-    }
 
+.stApp {
+    font-family: 'Outfit', sans-serif;
+    background: linear-gradient(135deg, #16213e, #0f3460);
+    color: #f0f0f0;
+    min-height: 100vh;
+    padding: 2rem 1rem;
+}
 
-
+/* Title with smooth gradient text and subtle shadow */
 .stTitle {
-    font-size: 2.5rem;
-    color: #5bc0eb;
-    text-align: center;
+    font-size: 3rem;
     font-weight: 700;
-    margin-bottom: 30px;
+    text-align: center;
+    margin-bottom: 3rem;
     text-transform: uppercase;
-    letter-spacing: 2px;
-    background: linear-gradient(45deg, #5bc0eb, #9b4f0f);
+    letter-spacing: 3px;
+    background: linear-gradient(90deg, #5bc0eb, #ff9f1c);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    text-shadow: 1px 1px 8px rgba(91,192,235,0.7);
 }
+
+/* Frame cards with subtle glass effect and soft glowing border */
 .frame-card {
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(15px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 12px;
-    padding: 20px;
-    margin-bottom: 20px;
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(18px);
+    border-radius: 16px;
+    padding: 22px 18px;
+    margin-bottom: 24px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    border: 1.5px solid rgba(91,192,235,0.4);
     position: relative;
     overflow: hidden;
+    transition: transform 0.3s ease;
 }
+.frame-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px rgba(91,192,235,0.5);
+}
+
+/* Animated gradient border */
 .frame-card::before {
     content: '';
     position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: linear-gradient(0deg, transparent, #5bc0eb, #9b4f0f);
+    top: -60%;
+    left: -60%;
+    width: 220%;
+    height: 220%;
+    background: linear-gradient(0deg, transparent, #5bc0eb, #ff9f1c, #5bc0eb, transparent);
     transform-origin: bottom right;
-    animation: border-dance 4s linear infinite;
+    animation: border-dance 6s linear infinite;
+    filter: blur(24px);
+    opacity: 0.6;
     z-index: -1;
 }
 @keyframes border-dance {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
 }
+
+/* Frame images with subtle border and shadow */
 .frame-image {
     max-width: 100%;
     height: auto;
-    border-radius: 8px;
-    border: 2px solid rgba(255,255,255,0.2);
-}
-.fake-label { color: #ff6b6b; font-weight: 600; }
-.real-label { color: #4ecdc4; font-weight: 600; }
-.final-prediction {
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(15px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 12px;
-    padding: 25px;
+    border: 3px solid rgba(255,255,255,0.15);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+    margin-bottom: 1rem;
+}
+
+/* Labels */
+.fake-label {
+    color: #ff6b6b;
+    font-weight: 700;
+    text-shadow: 0 0 5px #ff6b6baa;
+}
+.real-label {
+    color: #4ecdc4;
+    font-weight: 700;
+    text-shadow: 0 0 5px #4ecdc4aa;
+}
+
+/* Final prediction container */
+.final-prediction {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(20px);
+    border-radius: 20px;
+    padding: 30px 35px;
     text-align: center;
-    margin-top: 25px;
+    margin-top: 3rem;
+    box-shadow: 0 20px 40px rgba(91,192,235,0.35);
     position: relative;
     overflow: hidden;
+    border: 2px solid rgba(255, 255, 255, 0.25);
+    transition: box-shadow 0.3s ease;
 }
+.final-prediction:hover {
+    box-shadow: 0 30px 60px rgba(91,192,235,0.6);
+}
+
+/* Glow effect */
 .final-prediction::after {
     content: '';
     position: absolute;
-    bottom: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: linear-gradient(0deg, transparent, #5bc0eb, #9b4f0f);
-    transform-origin: top right;
-    animation: border-dance 4s linear infinite;
+    bottom: -60%;
+    left: -60%;
+    width: 220%;
+    height: 220%;
+    background: linear-gradient(0deg, transparent, #5bc0eb, #ff9f1c, #5bc0eb, transparent);
+    animation: border-dance 6s linear infinite;
+    filter: blur(28px);
+    opacity: 0.7;
     z-index: -1;
+    transform-origin: top right;
 }
+
+/* Text in final result */
 .final-result-title {
-    font-size: 1.5rem;
-    font-weight: bold;
-    margin-bottom: 0.5rem;
+    font-size: 1.8rem;
+    font-weight: 800;
+    margin-bottom: 0.7rem;
+    letter-spacing: 1.5px;
+    color: #ff9f1c;
+    text-shadow: 0 0 8px #ff9f1caa;
 }
+
 .final-result-value {
-    font-size: 2rem;
-    font-weight: bold;
-    margin-bottom: 0.5rem;
+    font-size: 2.8rem;
+    font-weight: 900;
+    margin-bottom: 0.8rem;
+    color: #5bc0eb;
+    text-shadow: 0 0 10px #5bc0ebcc;
 }
+
 .final-confidence {
-    font-size: 1.2rem;
-    margin-bottom: 0.5rem;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #eee;
+    margin-bottom: 0;
+    letter-spacing: 0.8px;
 }
 </style>
 """, unsafe_allow_html=True)
@@ -173,7 +223,7 @@ st.markdown('<h1 class="stTitle">DeepFake Detection System</h1>', unsafe_allow_h
 if model is None:
     st.stop()
 
-st.write("### Upload a video to check for deepfakes")
+st.write("### Upload a video to check for DeepFakes")
 uploaded_file = st.file_uploader("Choose a video file", type=["mp4", "avi", "mov"])
 frame_interval = st.number_input("Frame Sampling Interval", min_value=1, value=30, step=1)
 
