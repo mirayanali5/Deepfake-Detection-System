@@ -76,149 +76,93 @@ st.markdown("""
 
 .stApp {
     font-family: 'Outfit', sans-serif;
-    background: linear-gradient(135deg, #16213e, #0f3460);
-    color: #f0f0f0;
+    background: #f9fafb;
+    color: #333;
     min-height: 100vh;
-    padding: 2rem 1rem;
+    padding: 3rem 2rem;
 }
 
-/* Title with smooth gradient text and subtle shadow */
+/* Title */
 .stTitle {
-    font-size: 3rem;
-    font-weight: 700;
+    font-size: 2.8rem;
+    font-weight: 600;
     text-align: center;
-    margin-bottom: 3rem;
+    margin-bottom: 2.5rem;
+    color: #222;
+    letter-spacing: 1.5px;
     text-transform: uppercase;
-    letter-spacing: 3px;
-    background: linear-gradient(90deg, #5bc0eb, #ff9f1c);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    text-shadow: 1px 1px 8px rgba(91,192,235,0.7);
+    border-bottom: 2px solid #0078d7;
+    display: inline-block;
+    padding-bottom: 0.3rem;
 }
 
-/* Frame cards with subtle glass effect and soft glowing border */
+/* Card style */
 .frame-card {
-    background: rgba(255, 255, 255, 0.12);
-    backdrop-filter: blur(18px);
-    border-radius: 16px;
-    padding: 22px 18px;
-    margin-bottom: 24px;
-    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-    border: 1.5px solid rgba(91,192,235,0.4);
-    position: relative;
-    overflow: hidden;
-    transition: transform 0.3s ease;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgb(0 0 0 / 0.1);
+    padding: 1.5rem 1.8rem;
+    margin-bottom: 1.8rem;
+    transition: box-shadow 0.3s ease;
 }
 .frame-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 15px 30px rgba(91,192,235,0.5);
+    box-shadow: 0 8px 20px rgb(0 0 0 / 0.15);
 }
 
-/* Animated gradient border */
-.frame-card::before {
-    content: '';
-    position: absolute;
-    top: -60%;
-    left: -60%;
-    width: 220%;
-    height: 220%;
-    background: linear-gradient(0deg, transparent, #5bc0eb, #ff9f1c, #5bc0eb, transparent);
-    transform-origin: bottom right;
-    animation: border-dance 6s linear infinite;
-    filter: blur(24px);
-    opacity: 0.6;
-    z-index: -1;
-}
-@keyframes border-dance {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
-
-/* Frame images with subtle border and shadow */
+/* Images */
 .frame-image {
     max-width: 100%;
     height: auto;
-    border-radius: 12px;
-    border: 3px solid rgba(255,255,255,0.15);
-    box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+    border-radius: 8px;
     margin-bottom: 1rem;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 8px rgb(0 0 0 / 0.05);
 }
 
 /* Labels */
 .fake-label {
-    color: #ff6b6b;
-    font-weight: 700;
-    text-shadow: 0 0 5px #ff6b6baa;
+    color: #d32f2f;
+    font-weight: 600;
+    font-size: 1rem;
 }
 .real-label {
-    color: #4ecdc4;
-    font-weight: 700;
-    text-shadow: 0 0 5px #4ecdc4aa;
+    color: #388e3c;
+    font-weight: 600;
+    font-size: 1rem;
 }
 
-/* Final prediction container */
+/* Final prediction box */
 .final-prediction {
-    background: rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(20px);
-    border-radius: 20px;
-    padding: 30px 35px;
+    background: #fff;
+    border-radius: 14px;
+    box-shadow: 0 6px 18px rgb(0 0 0 / 0.12);
+    padding: 2rem 2.5rem;
     text-align: center;
     margin-top: 3rem;
-    box-shadow: 0 20px 40px rgba(91,192,235,0.35);
-    position: relative;
-    overflow: hidden;
-    border: 2px solid rgba(255, 255, 255, 0.25);
-    transition: box-shadow 0.3s ease;
+    color: #222;
 }
-.final-prediction:hover {
-    box-shadow: 0 30px 60px rgba(91,192,235,0.6);
-}
-
-/* Glow effect */
-.final-prediction::after {
-    content: '';
-    position: absolute;
-    bottom: -60%;
-    left: -60%;
-    width: 220%;
-    height: 220%;
-    background: linear-gradient(0deg, transparent, #5bc0eb, #ff9f1c, #5bc0eb, transparent);
-    animation: border-dance 6s linear infinite;
-    filter: blur(28px);
-    opacity: 0.7;
-    z-index: -1;
-    transform-origin: top right;
-}
-
-/* Text in final result */
 .final-result-title {
-    font-size: 1.8rem;
-    font-weight: 800;
-    margin-bottom: 0.7rem;
-    letter-spacing: 1.5px;
-    color: #ff9f1c;
-    text-shadow: 0 0 8px #ff9f1caa;
-}
-
-.final-result-value {
-    font-size: 2.8rem;
-    font-weight: 900;
+    font-size: 1.5rem;
+    font-weight: 700;
     margin-bottom: 0.8rem;
-    color: #5bc0eb;
-    text-shadow: 0 0 10px #5bc0ebcc;
+    color: #0078d7;
+}
+.final-result-value {
+    font-size: 2.4rem;
+    font-weight: 800;
+    margin-bottom: 0.6rem;
+}
+.final-confidence {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #555;
 }
 
-.final-confidence {
-    font-size: 1.3rem;
-    font-weight: 600;
-    color: #eee;
-    margin-bottom: 0;
-    letter-spacing: 0.8px;
-}
 </style>
 """, unsafe_allow_html=True)
 
 st.markdown('<h1 class="stTitle">DeepFake Detection System</h1>', unsafe_allow_html=True)
+
 
 if model is None:
     st.stop()
