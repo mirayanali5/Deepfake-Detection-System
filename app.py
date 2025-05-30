@@ -70,103 +70,105 @@ def predict_video_frames(video_path, interval=30):
         confidences.append(prob)
     return processed_frames, labels, predictions, confidences
 
+# Custom CSS
 st.markdown("""
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap');
+    .stApp {
+        font-family: 'Outfit', sans-serif;
+        background: linear-gradient(135deg, #1c2541, #3a506b);
+        color: #ffffff;
+    }
 
-.stApp {
-    font-family: 'Outfit', sans-serif;
-    background: #121212; /* Deep dark background */
-    color: #e0e0e0;
-    min-height: 100vh;
-    padding: 2rem;
-}
 
-/* Title */
+
 .stTitle {
-    font-size: 2.8rem;
-    font-weight: 700;
+    font-size: 2.5rem;
+    color: #5bc0eb;
     text-align: center;
-    margin-bottom: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 30px;
     text-transform: uppercase;
     letter-spacing: 2px;
-    background: linear-gradient(90deg, #5bc0eb, #9b4f0f);
+    background: linear-gradient(45deg, #5bc0eb, #9b4f0f);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
-
-/* Card style */
 .frame-card {
-    background: rgba(40, 40, 40, 0.75);
-    border-radius: 14px;
-    padding: 1.8rem 2rem;
-    margin-bottom: 2rem;
-    box-shadow: 0 0 15px rgba(91, 192, 235, 0.3);
-    transition: box-shadow 0.3s ease;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 20px;
+    position: relative;
+    overflow: hidden;
 }
-.frame-card:hover {
-    box-shadow: 0 0 25px rgba(155, 79, 15, 0.5);
+.frame-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(0deg, transparent, #5bc0eb, #9b4f0f);
+    transform-origin: bottom right;
+    animation: border-dance 4s linear infinite;
+    z-index: -1;
 }
-
-/* Images */
+@keyframes border-dance {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
 .frame-image {
     max-width: 100%;
     height: auto;
-    border-radius: 10px;
-    border: 1.5px solid rgba(255, 255, 255, 0.15);
-    margin-bottom: 1rem;
+    border-radius: 8px;
+    border: 2px solid rgba(255,255,255,0.2);
 }
-
-/* Labels */
-.fake-label {
-    color: #ff6b6b;
-    font-weight: 600;
-    font-size: 1rem;
-}
-.real-label {
-    color: #4ecdc4;
-    font-weight: 600;
-    font-size: 1rem;
-}
-
-/* Final prediction box */
+.fake-label { color: #ff6b6b; font-weight: 600; }
+.real-label { color: #4ecdc4; font-weight: 600; }
 .final-prediction {
-    background: rgba(40, 40, 40, 0.85);
-    border-radius: 14px;
-    padding: 2rem 2.5rem;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    padding: 25px;
     text-align: center;
-    margin-top: 3rem;
-    box-shadow: 0 0 30px rgba(91, 192, 235, 0.5);
-    color: #e0e0e0;
+    margin-top: 25px;
+    position: relative;
+    overflow: hidden;
 }
-
+.final-prediction::after {
+    content: '';
+    position: absolute;
+    bottom: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(0deg, transparent, #5bc0eb, #9b4f0f);
+    transform-origin: top right;
+    animation: border-dance 4s linear infinite;
+    z-index: -1;
+}
 .final-result-title {
-    font-size: 1.6rem;
-    font-weight: 700;
-    margin-bottom: 1rem;
-    color: #5bc0eb;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
 }
-
 .final-result-value {
-    font-size: 2.5rem;
-    font-weight: 800;
-    margin-bottom: 0.8rem;
-    background: linear-gradient(90deg, #5bc0eb, #9b4f0f);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
 }
-
 .final-confidence {
     font-size: 1.2rem;
-    font-weight: 500;
-    color: #cfcfcf;
+    margin-bottom: 0.5rem;
 }
 </style>
 """, unsafe_allow_html=True)
 
 st.markdown('<h1 class="stTitle">DeepFake Detection System</h1>', unsafe_allow_html=True)
-
-
 if model is None:
     st.stop()
 
