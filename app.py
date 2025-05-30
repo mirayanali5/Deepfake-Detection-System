@@ -76,9 +76,13 @@ st.markdown("""
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap');
 .stApp {
     font-family: 'Outfit', sans-serif;
-    background: linear-gradient(135deg, #1c2541, #3a506b);
+    background-image: url("https://raw.githubusercontent.com/mirayanali5/Deepfake-detection-system/main/bg.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     color: #ffffff;
 }
+
 
 
 .stTitle {
