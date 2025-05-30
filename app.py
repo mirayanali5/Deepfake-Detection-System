@@ -55,7 +55,7 @@ def predict_frame(frame_bgr):
     frame_processed, frame_display = preprocess_frame(frame_bgr)
     pred_prob = model.predict(np.expand_dims(frame_processed, 0), verbose=0)[0, 0]
     
-    label = "Real" if pred_prob < 0.87 else "Fake"
+    label = "Real" if pred_prob < 0.97 else "Fake"
     return label, pred_prob, frame_display
 
 def extract_frames(video_path, interval=30):
