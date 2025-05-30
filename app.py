@@ -212,7 +212,7 @@ if uploaded_file:
                     <div class="final-result-title">🎯 Final Analysis Result</div>
                     <div class="final-result-value" style="color: {final_color};">{final_label}</div>
                     <div class="final-confidence"><strong>Overall Confidence:</strong> {avg_conf:.1f}%</div>
-                   <div style="margin-top: 1.5rem; opacity: 0.7; font-size: 0.9rem;">
+                   <div style="margin-top: 1.5rem; opacity: 0.7; font-size: 1.2rem;">
                     <centre> Based on {len(frames)} frame{'s' if len(frames) != 1 else ''} 
                     </div>
                 </div>
