@@ -76,9 +76,13 @@ st.markdown("""
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap');
 .stApp {
     font-family: 'Outfit', sans-serif;
-    background: linear-gradient(135deg, #1c2541, #3a506b);
+    background-image: url("https://www.google.com/imgres?q=walpapers%20for%20deepfake&imgurl=https%3A%2F%2Fd2cbg94ubxgsnp.cloudfront.net%2FPictures%2F1024x536%2F1%2F9%2F1%2F520191_gettyimages121531695401_60041.jpg&imgrefurl=https%3A%2F%2Fwww.chemistryworld.com%2Fnews%2Fai-generated-images-could-make-it-almost-impossible-to-detect-fake-papers%2F4015708.article&docid=i66CghKJ6hzwuM&tbnid=SeycvakHy3G2JM&vet=12ahUKEwi4jJLh1MuNAxWvjq8BHeIKIzUQM3oECGYQAA..i&w=1024&h=536&hcb=2&ved=2ahUKEwi4jJLh1MuNAxWvjq8BHeIKIzUQM3oECGYQAA");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     color: #ffffff;
 }
+
 .stTitle {
     font-size: 2.5rem;
     color: #5bc0eb;
