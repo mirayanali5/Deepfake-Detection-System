@@ -213,7 +213,8 @@ if uploaded_file:
                     <div class="final-result-value" style="color: {final_color};">{final_label}</div>
                     <div class="final-confidence"><strong>Overall Confidence:</strong> {avg_conf:.1f}%</div>
                     <div style="margin-top: 1.5rem; opacity: 0.7; font-size: 0.9rem;">
-                        Based on {len(frames)} frame{'s' if len(frames) != 1 else ''} • Every {frame_interval}th frame'}
+                    f"Based on {len(frames)} frame{'s' if len(frames) != 1 else ''} • Every {frame_interval}th frame"
+
                     </div>
                 </div>
                 """, unsafe_allow_html=True)
