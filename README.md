@@ -69,8 +69,8 @@ A user-friendly web application to verify whether your videos are real or deepfa
 ## 👨‍💻 Team Members
 
 - [@mirayanali5](https://github.com/mirayanali5)  
-- [@ZunairaFatima7](https://github.com/ZunairaFatima7)  
-- [@Anikha-Tamkinath](https://github.com/Anikha-Tamkinath)  
+- [@ZunairaFatima7](https://github.com/ZunairaFatima9)  
+- [@Anikha-Tamkinath](https://github.com/Anikhatamkinath)  
 
 ---
 
