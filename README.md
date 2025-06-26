@@ -4,7 +4,7 @@ A user-friendly web application to verify whether your videos are real or deepfa
 
 ---
 
-## 🌐 Live Demo
+## 🌐 Website URL : 
 
 🔗 [Try the Deepfake Detection System](https://deepfake-detection-system.streamlit.app/)
 
